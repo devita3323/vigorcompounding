@@ -40,9 +40,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      # Build the project
+      # Install wix CLI tool globally
+      - name: Install wix CLI
+        run: npm install -g @wix/cli
+
+      # Check wix CLI version and available commands
+      - name: Verify wix CLI installation
+        run: wix --help
+
+      # Build the project using the appropriate wix CLI command
       - name: Build the project
-        run: npm run build
+        run: wix-cli-command # Replace with the correct command if 'build' is not available
 
       - name: Build And Deploy
         id: builddeploy
